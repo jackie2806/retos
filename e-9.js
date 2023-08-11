@@ -21,3 +21,15 @@ function printArr(arr1, arr2){
 }
 
 console.log(printArr([1, 2,'cabeza'], [1]))
+
+// Otra solución con métodos de Js
+
+function elementosComunes(arr1, arr2){
+    const filtro = arr1.filter(elemento => {
+        return arr2.includes(elemento);
+    });
+
+    return filtro;
+}
+
+console.log(elementosComunes(['Auxy', 'Tomas', 'Pierre'], ['Pierre']))
