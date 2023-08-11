@@ -1,71 +1,42 @@
 // Juego
-function puntuar(puntaje) {
+function puntuar(puntaje) {//recibo un array de instrucciones
   let count = 0;
-  if (puntaje > 0) {
-    
+  if (puntaje > 0) {    
     const arrRegistro = [];
     arrRegistro.push(puntaje);
     
     // regla 1
-    let regla1 = 0; //sumo las 2 últimas puntuaciones
-    if (arrRegistro !== null) {
+     //sumo las 2 últimas puntuaciones
+    if (arrRegistro >= 2) {
       for (let i = arrRegistro.length; i < 1; i--) {
-        regla1 += arrRegistro[i - 1] + arrRegistro[i];
+        let sumElements = arrRegistro[i - 1] + arrRegistro[i];
+        arrRegistro.push(sumElements)
       }
     }
+    console.log(arrRegistro)
     // regla 2
-    let regla2 = 0;
-    regla2 = regla1 * 2;
+    for(let i = arrRegistro.length; i < 1; i--){
+      let penultimoDoble = arrRegistro[i-1]*2;
+      console.log('pera',penultimoDoble)
+      arrRegistro.push(penultimoDoble)
+    }
+ 
     // regla 3
-    let regla3 = arrRegistro.pop();
-
+     arrRegistro.pop();
+    console.log(arrRegistro)
     //sumatoria de puntajes
     for (let i = 0; i < arrRegistro.length; i++) {
-      count += arrRegistro[i];
+      if(arrRegistro !== false){
+        return 0;
+      } else {
+        count += arrRegistro[i];
+      }
+      
     }
   }
   return count;
 }
 
 console.log(puntuar(10));
+console.log(puntuar(15));
 
-
-function puntuar(puntaje) {
-    let count = 0;
-    if (puntaje > 0) {
-      const arrRegistro = [];
-      arrRegistro.push(puntaje);
-  
-      // regla 1
-      let regla1 = 0;
-      if (arrRegistro.length >= 2) { 
-        for (let i = arrRegistro.length - 1; i >= arrRegistro.length - 2; i--) {
-          regla1 += arrRegistro[i]; 
-        }
-      }
-      
-      // regla 2
-      let regla2 = regla1 * 2;
-  
-      // regla 3
-      let regla3 = 0;
-      if (arrRegistro.length > 0) {
-        regla3 = arrRegistro[arrRegistro.length - 1]; 
-        arrRegistro.pop();
-      }
-  
-      // sumatoria de puntajes
-      for (let i = 0; i < arrRegistro.length; i++) {
-        count += arrRegistro[i];
-      }
-  
-      // Sumar las reglas 1, 2 y 3 al total
-      count += regla1 + regla2 + regla3;
-    }
-    return count;
-  }
-  
-  // Ejemplo de uso:
-  const puntajeTotal = puntuar(10);
-  const nuevoPuntaje = puntuar(20)
-  console.log('Puntaje total:', puntajeTotal, nuevoPuntaje); 
